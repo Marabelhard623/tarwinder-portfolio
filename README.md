@@ -1,4 +1,4 @@
-# Devfolio
+# tarwinder-portfolio
 
 Personal portfolio of **Tarwinder Singh** — Software Engineer | Full Stack.
 
@@ -42,8 +42,8 @@ A static single-page site focused on clarity, performance, and a refined interac
 ### Install & run
 
 ```bash
-git clone https://github.com/RAW85/devfolio.git
-cd devfolio
+git clone https://github.com/RAW85/tarwinder-portfolio.git
+cd tarwinder-portfolio
 npm ci
 npm run dev
 ```
@@ -75,7 +75,7 @@ Output is in `dist/` and can be deployed to any static host (Cloudflare Pages, V
 ## Project structure
 
 ```text
-devfolio/
+tarwinder-portfolio/
 ├── public/                 # Favicon and other static files
 ├── src/
 │   ├── components/
@@ -143,6 +143,18 @@ profile: {
 - Typography: Instrument Serif (display) + Plus Jakarta Sans (UI)
 - Motion respects `prefers-reduced-motion` where interactive effects apply
 - Particles and magnetic hover are lighter or disabled on touch / reduced-motion setups
+
+---
+
+## GitHub Pages
+
+Repo name should match the public path. With repo **`tarwinder-portfolio`**, the free URL is:
+
+```text
+https://RAW85.github.io/tarwinder-portfolio/
+```
+
+The deploy workflow sets `VITE_BASE` from the repository name automatically.
 
 ---
 
