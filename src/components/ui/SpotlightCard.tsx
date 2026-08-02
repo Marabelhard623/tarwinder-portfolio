@@ -49,8 +49,15 @@ export function SpotlightCard({
   )
 
   if (href) {
+    const external = /^https?:\/\//i.test(href)
     return (
-      <a href={href} className="block h-full no-underline outline-none">
+      <a
+        href={href}
+        className="block h-full no-underline outline-none"
+        {...(external
+          ? { target: '_blank', rel: 'noreferrer noopener' }
+          : {})}
+      >
         {wrapped}
       </a>
     )
