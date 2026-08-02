@@ -183,15 +183,13 @@ tarwinder-portfolio/
 
 ### Site content
 
-Edit:
+All portfolio copy (name, tagline, about, skills, experience, projects, links) lives in:
 
 ```text
 src/data/site.ts
 ```
 
-Update name, role, tagline, contact info, nav, about text, skills, experience, and projects there.
-
-Theme tokens (colors, type) live in `src/index.css`.
+Theme tokens live in `src/index.css`.
 
 ### Resume (Google Drive)
 

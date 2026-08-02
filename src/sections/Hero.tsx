@@ -91,7 +91,7 @@ export function Hero() {
 
           <motion.p
             variants={item}
-            className="mx-auto mt-8 max-w-2xl text-base leading-[1.75] text-muted sm:text-lg md:text-xl"
+            className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-muted text-balance sm:text-lg"
           >
             {site.tagline}
           </motion.p>

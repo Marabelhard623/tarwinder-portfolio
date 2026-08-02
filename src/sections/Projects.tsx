@@ -18,11 +18,14 @@ export function Projects() {
             id="projects-heading"
             eyebrow="04 — Projects"
             title="Projects"
-            description="Personal and open-source work I’ve built end to end."
+            description="Selected full-stack work — problem, approach, and what each build demonstrates."
           />
         </div>
 
-        <Stagger className="mx-auto grid max-w-2xl gap-5" stagger={0.1}>
+        <Stagger
+          className="mx-auto grid max-w-5xl gap-5 md:grid-cols-2"
+          stagger={0.1}
+        >
           {site.projects.map((project, index) => (
             <StaggerItem key={project.title} className="h-full">
               <SpotlightCard
@@ -31,25 +34,46 @@ export function Projects() {
                 className="group flex h-full flex-col p-6 sm:p-7"
               >
                 <div className="relative z-[1] flex h-full flex-col">
-                  <div className="mb-8 flex items-start justify-between gap-4">
+                  <div className="mb-6 flex items-start justify-between gap-4">
                     <span className="font-serif text-3xl text-faint/80 transition-colors group-hover:text-accent">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                     <span className="rounded-full border border-border bg-elevated/60 px-2.5 py-1 text-[0.7rem] font-medium text-faint">
-                      {project.outcome}
+                      {project.badge}
                     </span>
                   </div>
 
                   <h3 className="font-serif text-2xl tracking-tight text-text transition-colors group-hover:text-accent">
                     {project.title}
                   </h3>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted sm:text-[0.95rem]">
-                    {project.summary}
+                  <p className="mt-1 text-sm font-medium text-accent">
+                    {project.subtitle}
                   </p>
+
+                  <dl className="mt-6 flex flex-1 flex-col gap-4 text-sm leading-relaxed">
+                    <div>
+                      <dt className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-faint">
+                        Problem
+                      </dt>
+                      <dd className="mt-1.5 text-muted">{project.problem}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-faint">
+                        Solution
+                      </dt>
+                      <dd className="mt-1.5 text-muted">{project.solution}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-faint">
+                        Outcome
+                      </dt>
+                      <dd className="mt-1.5 text-muted">{project.outcome}</dd>
+                    </div>
+                  </dl>
 
                   <div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-5">
                     <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag) => (
+                      {project.tech.map((tag) => (
                         <span
                           key={tag}
                           className="rounded-full bg-accent-soft px-2.5 py-1 text-[0.7rem] font-medium text-accent-strong"
@@ -58,7 +82,7 @@ export function Projects() {
                         </span>
                       ))}
                     </div>
-                    <span className="inline-flex items-center gap-1 text-sm font-medium text-muted transition-colors group-hover:text-text">
+                    <span className="inline-flex shrink-0 items-center gap-1 text-sm font-medium text-muted transition-colors group-hover:text-text">
                       {project.linkLabel}
                       <span
                         aria-hidden
