@@ -4,6 +4,8 @@ Personal portfolio of **Tarwinder Singh** — Software Engineer | Full Stack.
 
 A static single-page site focused on clarity, performance, and a refined interactive presentation. Built for interviews and hiring managers: clean layout, real content, no gimmicks.
 
+**Live (GitHub Pages):** [https://raw85.github.io/tarwinder-portfolio/](https://raw85.github.io/tarwinder-portfolio/)
+
 ---
 
 ## Features
@@ -16,7 +18,7 @@ A static single-page site focused on clarity, performance, and a refined interac
 - **Profile photo** — Drive-hosted image with monogram fallback if load fails
 - **Content-driven** — most copy and links live in one data file
 - **Stable installs** — exact dependency versions pinned in `package.json`
-- **Fully static** — deploy `dist/` to any static host
+- **Hosted on GitHub Pages** — free, public repo, deploy from `gh-pages` branch
 
 ---
 
@@ -42,7 +44,7 @@ A static single-page site focused on clarity, performance, and a refined interac
 ### Install & run
 
 ```bash
-git clone https://github.com/RAW85/tarwinder-portfolio.git
+git clone git@github.com:RAW85/tarwinder-portfolio.git
 cd tarwinder-portfolio
 npm ci
 npm run dev
@@ -50,14 +52,23 @@ npm run dev
 
 Open the URL shown in the terminal (usually `http://localhost:5173`).
 
-### Production build
+### Production build (local preview)
 
 ```bash
+# Base path must match the GitHub Pages project URL
+# Windows PowerShell:
+$env:VITE_BASE="/tarwinder-portfolio/"
 npm run build
 npm run preview
 ```
 
-Output is in `dist/` and can be deployed to any static host (Cloudflare Pages, Vercel, GitHub Pages, etc.).
+```bash
+# macOS / Linux:
+VITE_BASE=/tarwinder-portfolio/ npm run build
+npm run preview
+```
+
+Output is written to `dist/`.
 
 ---
 
@@ -69,6 +80,75 @@ Output is in `dist/` and can be deployed to any static host (Cloudflare Pages, V
 | `npm run build` | Typecheck + production build → `dist/` |
 | `npm run preview` | Preview the production build |
 | `npm run lint` | Oxlint |
+
+---
+
+## Deploy to GitHub Pages (free)
+
+Hosting uses **Deploy from a branch** (same idea as a static site on `master`/`gh-pages`), **not** GitHub Actions.
+
+Live URL:
+
+```text
+https://raw85.github.io/tarwinder-portfolio/
+```
+
+`VITE_BASE` must be `/tarwinder-portfolio/` so JS/CSS load under that path.
+
+### First-time deploy
+
+1. Ensure the GitHub repo is **public** and named **`tarwinder-portfolio`**.
+2. Build with the correct base (from repo root):
+
+```powershell
+cd C:\Projects\tarwinder-portfolio
+$env:VITE_BASE="/tarwinder-portfolio/"
+npm ci
+npm run build
+```
+
+3. Push the **contents of `dist/`** to the **`gh-pages`** branch (SSH):
+
+```powershell
+cd dist
+git init
+git add -A
+git commit -m "Deploy site to GitHub Pages"
+git branch -M gh-pages
+git remote add origin git@github.com:RAW85/tarwinder-portfolio.git
+git push -f origin gh-pages
+cd ..
+```
+
+4. On GitHub: repo → **Settings → Pages**
+   - **Source:** Deploy from a branch  
+   - **Branch:** `gh-pages`  
+   - **Folder:** `/ (root)`  
+   - **Save**
+
+5. Wait a minute, then open the live URL above.
+
+### Update the live site later
+
+```powershell
+cd C:\Projects\tarwinder-portfolio
+$env:VITE_BASE="/tarwinder-portfolio/"
+npm run build
+cd dist
+git add -A
+git commit -m "Update site"
+git push -f origin gh-pages
+cd ..
+```
+
+(`dist` keeps its own git history for the `gh-pages` branch only. Source code stays on `main`.)
+
+### Notes
+
+- **Source code** → `main` (or `master`) via normal `git push`.
+- **Built site** → `gh-pages` only (the Pages branch).
+- Do **not** commit `dist/` into `main` (it is gitignored).
+- Repo name and `VITE_BASE` must stay aligned (`/tarwinder-portfolio/`).
 
 ---
 
@@ -94,7 +174,7 @@ tarwinder-portfolio/
 ├── LICENSE
 ├── package.json            # Exact versions only
 ├── package-lock.json
-└── vite.config.ts
+└── vite.config.ts          # Reads VITE_BASE for GitHub Pages path
 ```
 
 ---
@@ -143,18 +223,6 @@ profile: {
 - Typography: Instrument Serif (display) + Plus Jakarta Sans (UI)
 - Motion respects `prefers-reduced-motion` where interactive effects apply
 - Particles and magnetic hover are lighter or disabled on touch / reduced-motion setups
-
----
-
-## GitHub Pages
-
-Repo name should match the public path. With repo **`tarwinder-portfolio`**, the free URL is:
-
-```text
-https://RAW85.github.io/tarwinder-portfolio/
-```
-
-The deploy workflow sets `VITE_BASE` from the repository name automatically.
 
 ---
 
