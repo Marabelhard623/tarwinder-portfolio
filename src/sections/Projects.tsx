@@ -1,9 +1,18 @@
+import { useState } from 'react'
 import { site } from '../data/site'
 import { SectionHeading } from '../components/ui/SectionHeading'
 import { SpotlightCard } from '../components/ui/SpotlightCard'
 import { Stagger, StaggerItem } from '../components/ui/Reveal'
+import { VideoModal } from '../components/ui/VideoModal'
+
+type DemoState = {
+  title: string
+  src: string
+} | null
 
 export function Projects() {
+  const [demo, setDemo] = useState<DemoState>(null)
+
   return (
     <section
       id="projects"
@@ -29,7 +38,7 @@ export function Projects() {
           {site.projects.map((project, index) => (
             <StaggerItem key={project.title} className="h-full">
               <SpotlightCard
-                href={project.href}
+                magnetic
                 strength={8}
                 className="group flex h-full flex-col p-6 sm:p-7"
               >
@@ -71,26 +80,37 @@ export function Projects() {
                     </div>
                   </dl>
 
-                  <div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-5">
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full bg-accent-soft px-2.5 py-1 text-[0.7rem] font-medium text-accent-strong"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <span className="inline-flex shrink-0 items-center gap-1 text-sm font-medium text-muted transition-colors group-hover:text-text">
-                      {project.linkLabel}
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {project.tech.map((tag) => (
                       <span
-                        aria-hidden
-                        className="transition-transform group-hover:translate-x-0.5"
+                        key={tag}
+                        className="rounded-full bg-accent-soft px-2.5 py-1 text-[0.7rem] font-medium text-accent-strong"
                       >
-                        →
+                        {tag}
                       </span>
-                    </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-8 flex flex-wrap items-center gap-3 border-t border-border pt-5">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setDemo({ title: project.title, src: project.demoVideo })
+                      }
+                      className="inline-flex h-10 cursor-pointer items-center gap-2 rounded-full border border-border-strong bg-text px-4 text-sm font-semibold text-bg transition-opacity hover:opacity-90"
+                    >
+                      <PlayIcon />
+                      Watch demo
+                    </button>
+                    <a
+                      href={project.href}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="inline-flex h-10 items-center gap-1.5 rounded-full border border-border bg-surface px-4 text-sm font-medium text-muted transition-colors hover:border-border-strong hover:text-text"
+                    >
+                      {project.linkLabel}
+                      <span aria-hidden>→</span>
+                    </a>
                   </div>
                 </div>
               </SpotlightCard>
@@ -98,6 +118,27 @@ export function Projects() {
           ))}
         </Stagger>
       </div>
+
+      <VideoModal
+        open={demo !== null}
+        title={demo?.title ?? ''}
+        src={demo?.src ?? ''}
+        onClose={() => setDemo(null)}
+      />
     </section>
+  )
+}
+
+function PlayIcon() {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden
+    >
+      <path d="M8 5.5v13l11-6.5L8 5.5Z" />
+    </svg>
   )
 }

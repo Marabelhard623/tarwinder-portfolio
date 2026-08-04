@@ -120,6 +120,9 @@ export const site = {
       badge: 'Primary · Open source',
       href: 'https://github.com/RAW85/flagforge',
       linkLabel: 'GitHub',
+      // Direct attachment asset (playable) — not a github.com/.../blob/... page
+      demoVideo:
+        'https://github.com/user-attachments/assets/8d1bbff2-73af-448a-9b0d-80f890150223',
     },
     {
       title: 'Suberscribe',
@@ -143,6 +146,8 @@ export const site = {
       badge: 'Full-stack · MERN',
       href: 'https://github.com/RAW85/Suberscribe',
       linkLabel: 'GitHub',
+      demoVideo:
+        'https://github.com/user-attachments/assets/183280a6-6962-49be-bdb0-20b050c343eb',
     },
   ],
   skills: {
